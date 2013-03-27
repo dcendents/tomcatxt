@@ -8,6 +8,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 
+import com.sysdeo.eclipse.tomcat.FileUtil;
+import com.sysdeo.eclipse.tomcat.TomcatLauncherPlugin;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.mapper.MapperWrapper;
+
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
@@ -26,10 +31,6 @@ import org.uqbar.eclipse.tomcat.xt.xml.Context;
 import org.uqbar.eclipse.tomcat.xt.xml.Loader;
 import org.uqbar.eclipse.tomcat.xt.xml.Logger;
 import org.uqbar.eclipse.tomcat.xt.xml.ResourceLink;
-
-import com.sysdeo.eclipse.tomcat.FileUtil;
-import com.sysdeo.eclipse.tomcat.TomcatLauncherPlugin;
-import com.thoughtworks.xstream.XStream;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -52,23 +53,21 @@ public class UqbarSydeoXtActivator extends AbstractUIPlugin {
 		super.stop(context);
 	}
 
-	/**
-	 * Returns the shared instance
-	 * 
-	 * @return the shared instance
-	 */
+	    /**
+     * Returns the shared instance
+     * 
+     * @return the shared instance
+     */
 	public static UqbarSydeoXtActivator getDefault() {
 		return plugin;
 	}
 
-	/**
-	 * Returns an image descriptor for the image file at the given plug-in
-	 * relative path
-	 * 
-	 * @param path
-	 *            the path
-	 * @return the image descriptor
-	 */
+	    /**
+     * Returns an image descriptor for the image file at the given plug-in relative path
+     * 
+     * @param path the path
+     * @return the image descriptor
+     */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
@@ -125,7 +124,20 @@ public class UqbarSydeoXtActivator extends AbstractUIPlugin {
 
 	public XStream getXStream() {
 		if (this.xstream == null) {
-			this.xstream = new XStream();
+            this.xstream = new XStream() {
+                @Override
+                protected MapperWrapper wrapMapper(MapperWrapper next) {
+                    return new MapperWrapper(next) {
+                        @Override
+                        public boolean shouldSerializeMember(Class definedIn, String fieldName) {
+                            if (definedIn == Object.class) {
+                                return false;
+                            }
+                            return super.shouldSerializeMember(definedIn, fieldName);
+                        }
+                    };
+                }
+            };
 			xstream.alias("Context", Context.class);
 			xstream.useAttributeFor(Context.class, "path");
 			xstream.useAttributeFor(Context.class, "reloadable");
@@ -255,9 +267,9 @@ public class UqbarSydeoXtActivator extends AbstractUIPlugin {
 		URL fileURL = FileLocator.find(bundle, path, null);
 		return FileLocator.resolve(fileURL).getPath();
 	}
-	
+
 	private static String getDevLoaderJarDestination() {
 		return UqbarSydeoXtActivator.getDefault().getTomcat().getTomcatHome() + "/lib/DevloaderTomcat7.jar";
 	}
-	
+
 }

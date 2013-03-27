@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.uqbar.eclipse.tomcat.xt.loader;
 
@@ -21,6 +21,12 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import com.sysdeo.eclipse.tomcat.FileUtil;
+import com.sysdeo.eclipse.tomcat.TomcatLauncherPlugin;
+import com.sysdeo.eclipse.tomcat.TomcatProject;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.XStreamException;
+
 import org.uqbar.eclipse.tomcat.xt.UqbarSydeoXtActivator;
 import org.uqbar.eclipse.tomcat.xt.model.FileTomcatContext;
 import org.uqbar.eclipse.tomcat.xt.model.SimpleTomcatContext;
@@ -32,12 +38,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
-import com.sysdeo.eclipse.tomcat.FileUtil;
-import com.sysdeo.eclipse.tomcat.TomcatLauncherPlugin;
-import com.sysdeo.eclipse.tomcat.TomcatProject;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.XStreamException;
 
 /**
  * @author jfernandes
@@ -58,7 +58,7 @@ public class TomcatContextReaderImpl implements TomcatContextReader {
 
 	public List<TomcatContext> readContexts(Tomcat tomcat) {
 		List<TomcatContext> contexts = new ArrayList<TomcatContext>();
-		//HARCODE: handle "no tomcat configured" state well. 
+        // HARCODE: handle "no tomcat configured" state well.
 		if(!TomcatLauncherPlugin.isTomcatConfigured()) {
 			return contexts;
 		}
@@ -207,10 +207,10 @@ public class TomcatContextReaderImpl implements TomcatContextReader {
 			return new FileTomcatContext(contextFile, (Context) xstream.fromXML(new BufferedInputStream(fileStream)));
 		}
 		catch (XStreamException e) {
-			throw new RuntimeException("Errow while parsing context file '" + contextFile.getAbsolutePath() + "'");
+            throw new RuntimeException("Errow while parsing context file '" + contextFile.getAbsolutePath() + "'", e);
 		}
 		catch (FileNotFoundException e) {
-			throw new RuntimeException("Errow while parsing context file '" + contextFile.getAbsolutePath() + "'");
+            throw new RuntimeException("Errow while parsing context file '" + contextFile.getAbsolutePath() + "'", e);
 		}
 		finally {
 			if (fileStream != null) {
@@ -248,7 +248,7 @@ public class TomcatContextReaderImpl implements TomcatContextReader {
 			throw new RuntimeException("Error while queryin server.xml for <Host> element", e);
 		}
 	}
-	
+
 	public void refresh() {
 		this.serverXML = null;
 	}
