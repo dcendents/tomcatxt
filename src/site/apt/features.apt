@@ -1,0 +1,140 @@
+ -----
+ Uqbar Project
+ -----
+ TomcatXT Eclipse Plugin
+ -----
+ 
+ 
+Features
+
+ All TomcatXT plug-in features solve some kind of annoying task when working with tomcat within 
+ eclipse.\
+ The following list of features then, is presented as a <<pattern>> <problem-solution-screenshot>
+ for easy understanding.
+
+
+* Tomcat Configuration
+
+ <<Intention:>>\
+   To have a unique entry point to Tomcat's configuration elements
+
+ <<Solution:>>\
+   Tomcat view has a menu to access server configuration elements.
+   Including the posibility to install Sysdeo's DevLoader into the Tomcat server server being used.
+   
+[images/viewMenu.jpg] 
+
+
+* Context Visualization
+
+ <<Intention:>>\
+  See wich context are currently configured in tomcat.\
+  They can be declared either:
+  
+   * in the tomcat's server.xml
+   
+   * in their own context.xml file in <$TOMCAT_HOME/conf/Catalina/locahost/>
+   
+   * <<Note:>> <it still doesn't show contexts coming from deployed wars>
+
+ <<Solution:>>\
+  <Through a view with a list of contexts>
+  
+[images/contexts.jpg]
+
+* Tomcat State
+
+ <<Intention:>>\
+  At any time, be able to quickly visualize the tomcat state (Running|Stopped)\
+ 
+ <<Solution:>>\
+  <Through image decoration of the view's icon.>\
+  <This way even if the view is hidden or minimized, you still got its feedback through its icon>
+
+[images/running.jpg]
+
+[images/stopped.jpg]
+
+
+* Context State
+
+ <<Intention:>>\
+  Be able to quickly see all contexts states (Running|Stopped)\
+ 
+ <<Solution:>>\
+  <Through image decoration of context items.>
+
+[images/context-state.jpg]
+
+
+* Open Browser for Context
+
+ <<Intention:>>\
+  Quickly launch a browser to use a running context\
+ 
+ <<Solution:>>\
+  <Through context item double-click\
+  Also, you have two available actions at the context menu for every tomcat context:>
+   
+   * <<Browse:>> <Will launch a browser instance within the eclipse.>
+   
+   * <<Browser (ext):>> <Will launch a browser outside eclipse using the S.O. default browser.>
+
+   []
+	
+[images/browseContext.jpg]
+
+
+* Context Operations
+
+ <<Intention:>>\
+  Manage contexts runtime state like tomcat's manager webapp:
+   
+   * Start
+   
+   * Stop
+   
+   * Reload
+   
+   * Enabled
+   
+   * Disabled
+   
+   * Clean Work Directory [New in 1.2.0]
+   
+ <<Solution:>>\
+  <Through context menu actions>
+
+[images/contextMenu.jpg]
+
+
+* Context Source
+
+ <<Intention:>>\
+  See where contexts come from. Their source (context.xml|server.xml)\
+ 
+ <<Solution:>>\
+  <Through context items> <<text>> <decorations>
+
+[images/sourceTextDecoration.jpg]
+
+* Log Files
+
+ <<Intention:>>\
+  Quickly access tomcat's log files. Sometimes tomcat doesn't output exception's real causes at its console but logs them in the $TOMCAT/logs/ folder.
+  It would be great to have a way to access and manipulate those files. 
+   
+ <<Solution:>>\
+  <Through a tomcat's custom logs view>
+  <From this view you can
+  Like:>
+  
+  * <<Open>>< log files>
+  
+  * <<Delete>>< one of them.>
+  
+  * <Global log delete. For ><<clear>><ing ><<all>>< log files.>
+  
+  []
+   
+[images/logView.jpg]

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+	<bannerLeft>
+		<name>Uqbar Project</name>
+		<src>images/logo.gif</src>
+	</bannerLeft>
+	<bannerRight>
+		<name>${project.name}</name>
+	</bannerRight>
+
+	<poweredBy>
+		<logo name="Get Uqbar Tomcat XT at SourceForge.net"
+      		href="http://sourceforge.net/projects/uqbar-tomcat-xt"
+      		img="http://sflogo.sourceforge.net/sflogo.php?group_id=262799&amp;type=11"/>
+        <logo name="Uqbar Tomcat XT at MarketPlace" 
+          href="http://marketplace.eclipse.org/content/uqbar-tomcat-xt-eclipse-plug"
+          img="/images/marketplace.png" />
+	</poweredBy>
+
+	<publishDate position="none"/>
+	<version position="left"/>
+
+	<body>
+		<menu name="Overview">
+			<item name="Introduction" href="index.html"/>
+			<item name="Feaures" href="features.html"/>
+			<item name="Download" href="download.html" />
+			<item name="Usage" href="usage.html" />
+		</menu>
+
+		<menu ref="reports"/>
+
+	</body>
+</project>

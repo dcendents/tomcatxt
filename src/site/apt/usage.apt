@@ -1,0 +1,29 @@
+ -----
+ Uqbar Project
+ -----
+ TomcatXT Eclipse Plugin
+ -----
+ 
+ 
+Usage
+
+ TomcatXT plug-in provides all of its features through two additional views:
+ 
+   * Tomcat View
+   
+   * Tomcat Log View  
+   
+ So, once installed you should open these views with the following steps.
+
+ Go to Window->Show view->Other...
+ 
+[images/showView.jpg]
+
+ Choose tomcat's view under the "Tomcat" category.
+ 
+[images/tomcatViews.jpg]
+
+ Press "Ok".
+ 
+ You should now be seing both views. Now please refer to the {{{features.html} features page}} to find out what can you do, and how.
+   

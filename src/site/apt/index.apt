@@ -1,0 +1,47 @@
+ -----
+ Uqbar Project
+ -----
+ TomcatXT Eclipse Plugin
+ -----
+ 
+ 
+Introduction
+
+ Uqbar's TomcatXT plug-in is an extension to the well-known {{{http://www.eclipsetotale.com/tomcatPlugin.html}Tomcat Sysdeo Plugin}} 
+ for eclipse.\
+ The plug-in adds some useful features for managing tomcat's context both:
+ 
+ * for runtime functions like start | stop | reload context, 
+ 
+ * for configuration functions like removing a context. 
+ 
+ All features solve particular annoying tasks when developing web applications with tomcat.
+
+[images/contextMenu.jpg]
+
+What's New in 1.2.0??
+
+ Webapp works directory can be cleaned up. 
+
+ Sysdeo DevLoader installation compatible with Tomcat 6.X and 7.X. 
+ 
+Requirements
+
+ TomcatXT plugin requires:
+  
+  * {{{http://www.eclipsetotale.com/tomcatPlugin.html#A3}Sysdeo Tomcat plugin}}
+  
+  * {{{http://www.eclipse.org/downloads/}Eclipse >= 3.2}}
+  
+  * You should launch Eclipse using JDK >= 1.5
+   
+More Info
+
+ * {{{features.html}See the list of features for the current release.}}
+ 
+ * {{{download.html}Download & Install.}}
+ 
+ * {{{usage.html}Usage.}} 
+
+
+   

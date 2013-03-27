@@ -1,0 +1,28 @@
+ -----
+ Uqbar Project
+ -----
+ TomcatXT Eclipse Plugin
+ -----
+ 
+ 
+Download & Install
+
+ This project is hosted by Sourceforge and it can be found at
+  
+ {{https://sourceforge.net/projects/uqbar-tomcat-xt}}
+
+
+ Download the plug-in and copy it to your "$ECLIPSE_HOME/plugins" or "$ECLIPSE_HOME/dropins" folder. 
+
+ Please, see the {{{features.html}features}} page for more info on the current version.
+ 
+Requirements
+
+ TomcatXT plugin requires:
+  
+  * {{{http://www.eclipsetotale.com/tomcatPlugin.html#A3}Sysdeo Tomcat plugin}}
+  
+  * {{{http://www.eclipse.org/downloads/}Eclipse >= 3.2}}
+  
+  * You should launch Eclipse using JDK >= 1.5
+   

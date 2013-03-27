@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+<!--
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Tomcat-xt"
+            visible="true"
+            id="com_sysdeo_eclipse_tomcat_xt_actionSet">
+         <menu
+               label="&amp;Tomcat-xt"
+               id="com.sysdeo.eclipse.tomcat.xt.menu">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+         <action
+               label="&amp;Restart Tomcat"
+               icon="icons/restart.gif"
+               tooltip="&amp;Restart Tomcat"
+               class="org.uqbar.eclipse.tomcat.xt.views.management.actions.RestartTomcatActionDelegate"
+               menubarPath="com.sysdeo.eclipse.tomcat.xt.menu/group"
+               toolbarPath="Normal/additions"
+               id="com.sysdeo.eclipse.tomcat.xt.restart">
+         </action>
+         <action
+               label="S&amp;top Tomcat"
+               icon="icons/stop.gif"
+               tooltip="S&amp;top Tomcat"
+               class="org.uqbar.eclipse.tomcat.xt.views.management.actions.StopTomcatActionDelegate"
+               menubarPath="com.sysdeo.eclipse.tomcat.xt.menu/group"
+               toolbarPath="Normal/additions"
+               id="com.sysdeo.eclipse.tomcat.xt.stop">
+         </action>
+         <action
+               label="&amp;Start Tomcat"
+               icon="icons/start.gif"
+               tooltip="&amp;Start Tomcat"
+               class="org.uqbar.eclipse.tomcat.xt.views.management.actions.StartTomcatActionDelegate"
+               menubarPath="com.sysdeo.eclipse.tomcat.xt.menu/group"
+               toolbarPath="Normal/additions"
+               id="com.sysdeo.eclipse.tomcat.xt.start">
+         </action>
+      </actionSet>
+   </extension>
+   -->
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Tomcat"
+            id="org.uqbar.eclipse.sysdeo.xt">
+      </category>
+      <view
+            name="Tomcat"
+            icon="icons/tomcat.gif"
+            category="org.uqbar.eclipse.sysdeo.xt"
+            class="org.uqbar.eclipse.tomcat.xt.views.TomcatManagementView"
+            id="org.uqbar.eclipse.sysdeo.xt.views.TomcatManagementView">
+      </view>
+      <view
+            category="org.uqbar.eclipse.sysdeo.xt"
+            class="org.uqbar.eclipse.tomcat.xt.views.log.TomcatLogView"
+            icon="icons/logView.gif"
+            id="org.uqbar.eclipse.tomcat.xt.views.log.TomcatLogView"
+            name="Tomcat Log">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="org.uqbar.eclipse.sysdeo.xt.views.TomcatManagementView">
+         </view>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="org.uqbar.eclipse.tomcat.xt.views.log.TomcatLogView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.TaskList">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.uqbar.eclipse.sysdeo.xt.contribution1"
+            objectClass="org.uqbar.eclipse.tomcat.xt.model.TomcatContext">
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.CleanWorkDirContextAction"
+               id="org.uqbar.eclipse.sysdeo.xt.context.actions.cleanWorkDirContextAction"
+               label="Clean Work Directory"
+               menubarPath="config"
+               tooltip="Clean Work Directory">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.DisableContextAction"
+               id="org.uqbar.eclipse.tomcat.xt.popup.actions.DisableContextAction"
+               label="Disable"
+               menubarPath="config">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.EnableContextAction"
+               id="org.uqbar.eclipse.tomcat.xt.popup.actions.EnableContextAction"
+               label="Enable"
+               menubarPath="config">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.RemoveContextAction"
+               icon="/icons/delete.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.newAction"
+               label="Remove"
+			   menubarPath="config"
+               tooltip="Remove Context from tomcat">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.OpenWebXMLAction"
+               icon="/icons/web_xml.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.context.webxml"
+               label="Web.xml"
+               menubarPath="view"
+               tooltip="Open an editor for this context&apos;s web.xml file">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.BrowseContextAction"
+               icon="/icons/browser.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.context.actions.browse"
+               label="Browse"
+               menubarPath="view"
+               tooltip="Open the context within a browser">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.BrowseExternalContextAction"
+               icon="/icons/externalBrowser.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.context.actions.browseExternal"
+               label="Browse (external)"
+               menubarPath="view"
+               tooltip="Open the context in an external browser instance.">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.StopContextAction"
+               icon="/icons/stopContext.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.context.actions.stop"
+               label="Stop"
+               menubarPath="runtime"
+               tooltip="Stop the context">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.StartContextAction"
+               icon="/icons/startContext.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.context.actions.start"
+               label="Start"
+               menubarPath="runtime"
+               tooltip="Start the context">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.popup.actions.ReloadContextAction"
+               icon="/icons/refresh.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.context.actions.reload"
+               label="Reload"
+               menubarPath="runtime"
+               tooltip="Reload the context">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="org.uqbar.eclipse.sysdeo.xt.launchers"
+            targetID="org.uqbar.eclipse.sysdeo.xt.views.TomcatManagementView">
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.views.management.actions.RestartTomcatActionDelegate"
+               icon="/icons/restart.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.manager.restart"
+               label="Restart"
+               style="push"
+               toolbarPath="lauchers">
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.views.management.actions.StopTomcatActionDelegate"
+               icon="/icons/stop.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.manage.stop"
+               label="Stop"
+               style="push"
+               toolbarPath="lauchers">
+               <!--
+               <enablement>
+               <objectState
+                     name="org.uqbar.eclipse.sysdeo.xt.model.Tomcat.running"
+                     value="true">
+               </objectState>
+            </enablement>
+            	-->
+         </action>
+         <action
+               class="org.uqbar.eclipse.tomcat.xt.views.management.actions.StartTomcatActionDelegate"
+               icon="/icons/start.gif"
+               id="org.uqbar.eclipse.sysdeo.xt.manager.start"
+               label="Start"
+               style="push"
+               toolbarPath="lauchers">
+               <!--
+               <enablement>
+               <objectState
+                     name="org.uqbar.eclipse.sysdeo.xt.model.Tomcat.running"
+                     value="false">
+               </objectState>
+            </enablement>
+            	-->
+         </action>
+      </viewContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/sample_decorator.gif"
+            id="org.uqbar.eclipse.sysdeo.xt.context.decorators.runtime"
+            class="org.uqbar.eclipse.tomcat.xt.context.decorator.TomcatContextDecorator"
+            label="TomcatContext Runtime State Decoration"
+            lightweight="true"
+            location="BOTTOM_LEFT"
+            state="true">
+         <enablement>
+         	<objectClass
+                name="org.uqbar.eclipse.tomcat.xt.model.TomcatContext">
+         	</objectClass>
+         </enablement>
+      </decorator>
+      <decorator
+            adaptable="true"
+            class="org.uqbar.eclipse.tomcat.xt.context.decorator.TomcatDecorator"
+            id="org.uqbar.eclipse.sysdeo.xt.decorators.tomcat"
+            label="Tomcat Runtime State Decoration"
+            lightweight="true"
+            location="BOTTOM_LEFT"
+            state="true">
+         <enablement>
+            <objectClass name="org.uqbar.eclipse.tomcat.xt.model.Tomcat">
+            </objectClass>
+         </enablement>
+      </decorator>
+      <decorator
+            adaptable="true"
+            class="org.uqbar.eclipse.tomcat.xt.context.decorator.TomcatContextSourceDecoration"
+            id="org.uqbar.eclipse.sysdeo.xt.context.decorators.source"
+            label="TomcatContext Source Text Suffix Decoration"
+            lightweight="true"
+            objectClass="org.uqbar.eclipse.tomcat.xt.model.TomcatContext"
+            state="true">
+      </decorator>
+   </extension>
+
+</plugin>
